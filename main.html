@@ -38,74 +38,39 @@
                 </div>
             </div>
             <div class='player-details-column-layout'>
-                <div class='player-ability-scores-layout'>
-                    <p>STR</p>
-                    <p>DEX</p>
-                    <p>CON</p>
-                    <p>INT</p>
-                    <p>WIS</p>
-                    <p>CHA</p>
-                    <input id='str-entry' class='ability-score-input'/>
-                    <input id='dex-entry' class='ability-score-input'/>
-                    <input id='con-entry' class='ability-score-input'/>
-                    <input id='int-entry' class='ability-score-input'/>
-                    <input id='wis-entry' class='ability-score-input'/>
-                    <input id='cha-entry' class='ability-score-input'/>
-                    <p id='str-display'>0</p>
-                    <p id='dex-display'>0</p>
-                    <p id='con-display'>0</p>
-                    <p id='int-display'>0</p>
-                    <p id='wis-display'>0</p>
-                    <p id='cha-display'>0</p>
+                <div style='display:flex; flex-direction: column;'>
+                    <div class='player-ability-scores-layout'>
+                        <p>STR</p>
+                        <p>DEX</p>
+                        <p>CON</p>
+                        <p>INT</p>
+                        <p>WIS</p>
+                        <p>CHA</p>
+                        <input id='str-entry'/>
+                        <input id='dex-entry'/>
+                        <input id='con-entry'/>
+                        <input id='int-entry'/>
+                        <input id='wis-entry'/>
+                        <input id='cha-entry'/>
+                        <p id='str-display'>0</p>
+                        <p id='dex-display'>0</p>
+                        <p id='con-display'>0</p>
+                        <p id='int-display'>0</p>
+                        <p id='wis-display'>0</p>
+                        <p id='cha-display'>0</p>
+                    </div>
+                    <div class='horizontal-layout'>
+                        <p>Proficiency Bonus</p>
+                        <input id='prof-bonus-entry'/>
+                    </div>
+                    <div id='saving-throws-list'></div>
+                    <div id='skill-list'></div>
+                    <p>Other Proficiencies and Languages:</p>
+                    <input id='other-prof-lang-entry' style='flex: 1 1 auto;'/>
                 </div>
+                
             </div>
         </div>
-        <!-- <table>
-            <tr>
-                <th>Name</th>
-                <th><input id='name-entry'/></th>
-                <th>Class&Level</th>
-                <th><input id='class-level-entry'/></th>
-                <th>Background</th>
-                <th><input id='background-entry'/></th>
-            </tr>
-            <tr>
-                <th>Race</th>
-                <th><input id='race-entry'/></th>
-                <th>Alignment</th>
-                <th><input id='alignment-entry'/></th>
-                <th>XP</th>
-                <th><input id='xp-entry'/></th>
-            </tr>
-        </table>
-        <div class='table-wrapper'>
-            <table style='background-color: aquamarine; height: 100%; width: 100%; table-layout: fixed;'>
-                <tr>
-                    <th style='vertical-align: top;'>
-                        <table>
-                            <tr>
-                                <th>STR</th>
-                                <th>DEX</th>
-                                <th>CON</th>
-                                <th>INT</th>
-                                <th>WIS</th>
-                                <th>CHA</th>
-                            </tr>
-                            <tr>
-                                <th><input id='str-entry' class='ability-score-input'/></th>
-                                <th><input id='dex-entry' class='ability-score-input'/></th>
-                                <th><input id='con-entry' class='ability-score-input'/></th>
-                                <th><input id='int-entry' class='ability-score-input'/></th>
-                                <th><input id='wis-entry' class='ability-score-input'/></th>
-                                <th><input id='cha-entry' class='ability-score-input'/></th>
-                            </tr>
-                        </table>
-                    </th>
-                    <th>Test</th>
-                    <th>Test</th>
-                </tr>
-            </table>
-        </div> -->
     </div>
     <div class='right-section'>
         

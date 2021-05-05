@@ -1,0 +1,18 @@
+.player-main-layout {
+    display: grid;
+    grid-template-areas: 
+        'player-left-content middle-content right-content';
+}
+
+.player-left-content {
+    grid-area: player-left-content;
+}
+
+.player-middle-content {
+    grid-area: player-middle-content;
+}
+
+.player-right-content {
+    grid-area: player-right-content;
+}
+

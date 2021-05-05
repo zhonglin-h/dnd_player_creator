@@ -32,7 +32,7 @@ body
 }
 
 .right-section{
-    position: relative;
+    position: relative; /* in order for position relative in children to work */
     float:left;
 
     width: 50%;

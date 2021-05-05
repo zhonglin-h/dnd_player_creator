@@ -3,8 +3,29 @@
     position: relative;
     flex: 1 1 auto;
 
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
 
     background-color: aquamarine;
+}
+
+.player-main-info-layout {
+    display: grid; 
+
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    grid-template-rows: repeat(2, auto);
+}
+
+.player-details-column-layout {
+    display: grid; 
+
+    grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    grid-template-rows: 1fr;
+}
+
+.player-ability-scores-layout {
+    display: grid; 
+    
+    grid-template-columns: repeat(6, minmax(0, 1fr)); 
+    grid-template-rows: repeat(3, 20px);
 }
 

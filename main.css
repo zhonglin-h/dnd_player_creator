@@ -45,22 +45,14 @@ body
     background-color: coral;
 }
 
+.horizontal-layout {
+    display: flex;
+}
+
 .action-button {
     position: absolute;
 
     width: 50 em;
-}
-
-.table-wrapper {
-    position: relative;
-    flex: 1 1 0;
-}
-
-.ability-score-input {
-    position: relative;
-    /* flex: 1 1 0; */
-
-    width: 80%;
 }
 
 h1 {

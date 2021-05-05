@@ -1,18 +1,10 @@
 .player-main-layout {
     display: grid;
-    grid-template-areas: 
-        'player-left-content middle-content right-content';
-}
+    position: relative;
+    flex: 1 1 auto;
 
-.player-left-content {
-    grid-area: player-left-content;
-}
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 
-.player-middle-content {
-    grid-area: player-middle-content;
-}
-
-.player-right-content {
-    grid-area: player-right-content;
+    background-color: aquamarine;
 }
 

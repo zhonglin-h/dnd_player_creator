@@ -1,0 +1,23 @@
+{
+  "name": "dnd_player_creator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhonglin-h/dnd_player_creator.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhonglin-h/dnd_player_creator/issues"
+  },
+  "homepage": "https://github.com/zhonglin-h/dnd_player_creator#readme",
+  "devDependencies": {
+    "electron": "^12.0.6"
+  }
+}

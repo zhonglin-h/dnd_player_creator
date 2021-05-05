@@ -21,25 +21,27 @@
                     <input id='class-level-entry' style='width: 65%;'/>
                 </div>
                 <div class='horizontal-layout'>
-                    <p style='width:35%;'>Class & Lvl</p>
-                    <input id='class-level-entry' style='width: 65%;'/>
+                    <p style='width:25%;'>Race</p>
+                    <input id='race-entry' style='width: 75%;'/>
                 </div>
                 <div class='horizontal-layout'>
-                    <p style='width:35%;'>Class & Lvl</p>
-                    <input id='class-level-entry' style='width: 65%;'/>
+                    <p style='width:35%;'>Background</p>
+                    <input id='background-entry' style='width: 65%;'/>
                 </div>
                 <div class='horizontal-layout'>
-                    <p style='width:35%;'>Class & Lvl</p>
-                    <input id='class-level-entry' style='width: 65%;'/>
+                    <p style='width:35%;'>Alignment</p>
+                    <input id='alignment-entry' style='width: 65%;'/>
                 </div>
                 <div class='horizontal-layout'>
-                    <p style='width:35%;'>Class & Lvl</p>
-                    <input id='class-level-entry' style='width: 65%;'/>
+                    <p style='width:35%;'>Experience</p>
+                    <input id='xp-entry' style='width: 65%;'/>
                 </div>
             </div>
+            <br/>
             <div class='player-details-column-layout'>
+                <!-- First Column -->
                 <div style='display:flex; flex-direction: column;'>
-                    <div class='player-ability-scores-layout'>
+                    <div id='ability-scores-list' class='player-ability-scores-layout'>
                         <p>STR</p>
                         <p>DEX</p>
                         <p>CON</p>
@@ -60,15 +62,60 @@
                         <p id='cha-display'>0</p>
                     </div>
                     <div class='horizontal-layout'>
-                        <p>Proficiency Bonus</p>
-                        <input id='prof-bonus-entry'/>
+                        <p style='width:35%'>Proficiency Bonus</p>
+                        <input id='prof-bonus-entry' style='width:65%'/>
                     </div>
                     <div id='saving-throws-list'></div>
                     <div id='skill-list'></div>
+                    <br/>
                     <p>Other Proficiencies and Languages:</p>
-                    <input id='other-prof-lang-entry' style='flex: 1 1 auto;'/>
+                    <textarea id='other-prof-lang-entry' style='flex: 1 1 auto;resize:none;' ></textarea>
                 </div>
-                
+                <!-- Second Column -->
+                <div>
+                    <div id='player-combat-details-layout'>
+                        <div style='grid-area:ac'>
+                            <p>AC</p>
+                            <input id='ac-entry' style='width:100%'/>
+                        </div>
+                        <div style='grid-area:init'>
+                            <p>Initiative</p>
+                            <input id='init-entry'  style='width:100%'/>
+                        </div>
+                        <div style='grid-area:speed'>
+                            <p>Speed</p>
+                            <input id='speed-entry' style='width:100%'/>
+                        </div>
+                        <div class='horizontal-layout' style='grid-area:hp;'>
+                            <p style='flex:1 0 auto;'>Hit Points</p>
+                            <input id='speed-entry' style='width:10%'/>
+                            /
+                            <input id='speed-entry' style='width:10%'/>
+                        </div>
+                        <div class='horizontal-layout' style='grid-area:thp;'>
+                            <p style='flex:1 0 auto;'>Temporary Hit Points</p>
+                            <input id='speed-entry' style='width:10%'/>
+                            /
+                            <input id='speed-entry' style='width:10%'/>
+                        </div>
+                        <div style='grid-area:hit-dice'>hit dice</div>
+                        <div style='grid-area:death-saves'>
+                            <p>Death Saves</p>
+                            <p>Success:</p>
+                            <input id='success1-entry' type='checkbox'></input>
+                            <input id='success2-entry' type='checkbox'></input>
+                            <input id='success3-entry' type='checkbox'></input>
+                            <p>Fail:</p>
+                            <input id='fail1-entry' type='checkbox'></input>
+                            <input id='fail2-entry' type='checkbox'></input>
+                            <input id='fail3-entry' type='checkbox'></input>
+                        </div>
+                    </div>
+                </div>
+                <!-- Third Column -->
+                <div>
+                    Empty
+                </div>
             </div>
         </div>
     </div>

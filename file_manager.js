@@ -3,8 +3,6 @@ const {dialog} = require('electron')
 const path = require('path');
 
 // -------------- CONSTANTS & GLOBALS -------------
-// const dummy_save_path = path.join(__dirname, '..', 'graphical_representation_backbone', 'dummy.json')
-const dummy_save_path = path.join(__dirname, '..', '..', '..', "resources", 'example-project.json')
 const project_filter_list = [
     {name: '', extensions: ['json']}, // system description json
     {name: 'All Files', extensions: ['*']}
@@ -38,7 +36,7 @@ function openFileDialog (win){
         let options = {
         title : "Choose File", 
 
-        defaultPath : path.join(base_path,'saves'),
+        defaultPath : path.join(base_path),
 
         buttonLabel : "Open",
 
@@ -115,17 +113,12 @@ function openSaveDialog(win, verilog = false){
     return filePaths
 }
 
-function loadSave(filepath, dummy = false){
+function loadSave(filepath){
     let data = readJSONFile(filepath)
     if (data != "-1"){
         save_json = data
 
-        //save path if not dummy
-        if (dummy){
-            save_file_path = false
-        } else {
-            save_file_path = filepath
-        }
+        save_file_path = filepath
         return true
     } else {
         return false

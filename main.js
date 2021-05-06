@@ -1,9 +1,37 @@
-const { app, BrowserWindow, screen, ipcMain} = require('electron')
+const { app, BrowserWindow, screen, ipcMain, Menu} = require('electron')
 const path = require('path')
 
 const file_manager = require('../dnd_player_creator/file_manager.js')
 
 var win = null
+
+function setMenu () {
+    Menu.setApplicationMenu(null)
+}
+
+function setMainListeners(){
+    ipcMain.on('debug', function(event,arg){
+        console.log("debug: " + arg)
+    })
+
+    ipcMain.on('save', function (event, arg){
+        file_manager.updateSave(arg)
+        file_manager.saveSave()
+    })
+
+    ipcMain.on('open', function(event,arg) {
+        let file_path = file_manager.openFileDialog(win)()
+        if (file_path != undefined){
+            let result = file_manager.loadSave(file_path[0])
+
+            if (result){
+                event.reply('update-displayed-data', file_manager.getSave())
+            } else {
+                event.reply('error', "failed to load file")
+            }
+        }
+    })
+}
 
 function createWindow () {
     win = new BrowserWindow({
@@ -19,14 +47,8 @@ function createWindow () {
 
     file_manager.setBasePath(app.getAppPath())
 
-    ipcMain.on('debug', function(event,arg){
-        console.log("debug: " + arg)
-    })
-
-    ipcMain.on('save', function (event, arg){
-        file_manager.updateSave(arg)
-        file_manager.saveSave()
-    })
+    setMainListeners()
+    setMenu()
 }
 
 app.whenReady().then(() => {

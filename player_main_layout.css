@@ -26,11 +26,11 @@
     column-gap: 5%;
 }
 
-.player-ability-scores-layout {
+#player-ability-scores-list {
     display: grid; 
     
     grid-template-columns: repeat(6, minmax(0, 1fr)); 
-    grid-template-rows: repeat(3, 20px);
+    grid-template-rows: repeat(5, 20px);
 }
 
 #player-combat-details-layout {

@@ -1,5 +1,11 @@
 {
     "alignment": [
         "Lawful Good", "Lawful Neutral", "Lawful Evil", "True Neutral", "Chaotic Good", "Chaotic Neutral", "Chaotic Evil"
+    ],
+    "ability_scores": [
+        "Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"
+    ],
+    "short_ability_scores": [
+        "STR", "DEX", "CON", "INT", "WIS", "CHA"
     ]
 }

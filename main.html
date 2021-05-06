@@ -42,26 +42,8 @@
             <div class='player-details-column-layout'>
                 <!-- First Column -->
                 <div style='display:flex; flex-direction: column;'>
-                    <div id='ability-scores-list' class='player-ability-scores-layout'>
-                        <p>STR</p>
-                        <p>DEX</p>
-                        <p>CON</p>
-                        <p>INT</p>
-                        <p>WIS</p>
-                        <p>CHA</p>
-                        <input id='str-entry'/>
-                        <input id='dex-entry'/>
-                        <input id='con-entry'/>
-                        <input id='int-entry'/>
-                        <input id='wis-entry'/>
-                        <input id='cha-entry'/>
-                        <p id='str-display'>0</p>
-                        <p id='dex-display'>0</p>
-                        <p id='con-display'>0</p>
-                        <p id='int-display'>0</p>
-                        <p id='wis-display'>0</p>
-                        <p id='cha-display'>0</p>
-                    </div>
+                    <div id='player-ability-scores-list'></div>
+                    <br/>
                     <div class='horizontal-layout'>
                         <p style='width:35%'>Proficiency Bonus</p>
                         <input id='prof-bonus-entry' style='width:65%'/>
@@ -100,14 +82,20 @@
                         <div style='grid-area:hit-dice'>hit dice</div>
                         <div style='grid-area:death-saves'>
                             <p>Death Saves</p>
-                            <p>Success:</p>
-                            <input id='success1-entry' type='checkbox'></input>
-                            <input id='success2-entry' type='checkbox'></input>
-                            <input id='success3-entry' type='checkbox'></input>
-                            <p>Fail:</p>
-                            <input id='fail1-entry' type='checkbox'></input>
-                            <input id='fail2-entry' type='checkbox'></input>
-                            <input id='fail3-entry' type='checkbox'></input>
+                            <div class="horizontal-layout">
+                                <div>
+                                    <p>Success:</p>
+                                    <input id='success1-entry' type='checkbox'></input>
+                                    <input id='success2-entry' type='checkbox'></input>
+                                    <input id='success3-entry' type='checkbox'></input>
+                                </div>
+                                <div>
+                                    <p>Fail:</p>
+                                    <input id='fail1-entry' type='checkbox'></input>
+                                    <input id='fail2-entry' type='checkbox'></input>
+                                    <input id='fail3-entry' type='checkbox'></input>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

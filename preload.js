@@ -2,7 +2,47 @@ const {ipcRenderer} = require('electron')
 
 const C = require('../dnd_player_creator/CONSTANTS.js')
 
+// dynamically fill in options
+function preload_from_constants(){
+    const alignment_entry = document.getElementById('alignment-entry')
+    fill_drop_down(alignment_entry, C.player_info['alignment'])
 
+    const ability_scores_list = document.getElementById('player-ability-scores-list')
+    // add text
+    for (const short_ability_name of C.player_info['short_ability_scores']){
+        let element = document.createElement('p')
+        element.textContent = short_ability_name
+        ability_scores_list.appendChild(element)
+    }
+    // add inputs
+    for (const short_ability_name of C.player_info['short_ability_scores']){
+        let element = document.createElement('input')
+        element.id = short_ability_name.toLowerCase() + C.saved_entries_id_key
+        ability_scores_list.appendChild(element)
+    }
+    // add display
+    for (const short_ability_name of C.player_info['short_ability_scores']){
+        let element = document.createElement('p')
+        element.id = short_ability_name.toLowerCase() + '-display'
+        element.textContent = "0"
+        ability_scores_list.appendChild(element)
+    }
+    // add buffer
+    let save_title = document.createElement('p')
+    save_title.textContent = "Saves"
+    ability_scores_list.appendChild(save_title)
+    for (let i = 1; i < C.player_info['short_ability_scores'].length; i++){
+        let buffer = document.createElement('p')
+        ability_scores_list.appendChild(buffer)
+    }
+    // add saving throws
+    for (const short_ability_name of C.player_info['short_ability_scores']){
+        let element = document.createElement('p')
+        element.id = short_ability_name.toLowerCase() + 'saving-throw-display'
+        element.textContent = "0"
+        ability_scores_list.appendChild(element)
+    }
+}
 
 function update_displayed_data(dict){
     const root_node = document.getRootNode()
@@ -14,7 +54,7 @@ function recursive_entry_editing(node, dict){
     let return_val = 0;
     
     // edit it in if it's data
-    if (node.id != undefined && node.id != "" && node.id.search('-entry') > 0){
+    if (node.id != undefined && node.id != "" && node.id.search(C.saved_entries_id_key) > 0){
         if (node.nodeName == 'INPUT' && node.type == 'text'){
             node.value = dict[node.id]
         } else if (node.nodeName == 'INPUT' && node.type == 'checkbox') {
@@ -47,7 +87,7 @@ function recursive_entry_adding(node, dict){
     let return_val = 0;
     
     // add it in if it's data
-    if (node.id != undefined && node.id != "" && node.id.search('-entry') > 0){
+    if (node.id != undefined && node.id != "" && node.id.search(C.saved_entries_id_key) > 0){
         if (node.id in dict){
             ipcRenderer.send('debug', "this node id was repeated: " + node.id)
             return -1;
@@ -97,9 +137,7 @@ function fill_drop_down(node, options_arr){
 // main code
 
 window.addEventListener('DOMContentLoaded', () => {
-    // dynamically fill in options
-    const alignment_entry = document.getElementById('alignment-entry')
-    fill_drop_down(alignment_entry, C.player_info['alignment'])
+    preload_from_constants()
 
     // set onclick listeners
     const open_button = document.getElementById('open-button')

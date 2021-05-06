@@ -37,7 +37,7 @@ function createWindow () {
     win = new BrowserWindow({
         width: screen.getPrimaryDisplay().workAreaSize['width'],
         height: screen.getPrimaryDisplay().workAreaSize['height'],
-        resizable: false,
+        //resizable: false, TODO: uncomment this on release
         webPreferences: {
             preload: path.join(__dirname, 'preload.js')
         }

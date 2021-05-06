@@ -31,6 +31,17 @@ function setMainListeners(){
             }
         }
     })
+
+    ipcMain.on('new', function(event, arg) {
+        let file_path = file_manager.openNewDialog(win)
+        if (file_path != undefined){
+            file_manager.changeSavePath(file_path)
+            file_manager.updateSave(arg)
+            file_manager.saveSave()
+
+            event.reply('update-displayed-data', file_manager.getSave())
+        }
+    })
 }
 
 function createWindow () {

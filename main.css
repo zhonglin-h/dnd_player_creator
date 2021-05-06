@@ -6,6 +6,8 @@ html
     height: 100%;
 
     line-height: normal;
+
+    font-size: 100%
 }
 
 body
@@ -63,4 +65,8 @@ h1 {
 p {
     margin: 0;
     padding: 0;
+}
+
+.small-scaling-text {
+    font-size: 0.75rem;
 }

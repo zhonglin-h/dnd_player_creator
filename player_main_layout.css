@@ -33,6 +33,12 @@
     grid-template-rows: repeat(5, 20px);
 }
 
+#player-skill-list {
+    display: grid; 
+    
+    grid-template-columns: minmax(0,1fr) minmax(0, 7fr) minmax(0, 2fr);
+}
+
 #player-combat-details-layout {
     display: grid; 
     

@@ -38,9 +38,33 @@ function preload_from_constants(){
     // add saving throws
     for (const short_ability_name of C.player_info['short_ability_scores']){
         let element = document.createElement('p')
-        element.id = short_ability_name.toLowerCase() + 'saving-throw-display'
+        element.id = short_ability_name.toLowerCase() + '-saving-throw-display'
         element.textContent = "0"
         ability_scores_list.appendChild(element)
+    }
+
+    // skill list
+    const skills_list = document.getElementById('player-skill-list')
+    skills_list.style.gridTemplateRows = "repeat(" + C.player_info['skills'].length + ", auto)"
+    for (const skill of C.player_info['skills']){
+        let bonus_display = document.createElement('input')
+        bonus_display.id = skill['name'].toLowerCase() + '-skill-bonus-entry'
+        bonus_display.textContent = "0"
+        bonus_display.className = 'small-scaling-text'
+        skills_list.appendChild(bonus_display)
+
+        let skill_text_display = document.createElement('p')
+        skill_text_display.textContent = skill['name'] + " (" + skill['ability_type'] + ")"
+        skill_text_display.className = 'small-scaling-text'
+        skills_list.appendChild(skill_text_display) 
+
+        // prof and expertise
+        let prof_exp_select = document.createElement('select')
+        prof_exp_select.id = skill['name'].toLowerCase() + '-prof-exp-entry'
+        add_option_element(prof_exp_select, '-')
+        add_option_element(prof_exp_select, 'Prof')
+        add_option_element(prof_exp_select, 'Exp')
+        skills_list.appendChild(prof_exp_select)
     }
 }
 
@@ -131,6 +155,15 @@ function fill_drop_down(node, options_arr){
 
         node.appendChild(new_element)
     }
+}
+
+function add_option_element(parent_select, option){
+    let new_element = document.createElement('option')
+
+    new_element.textContent = option
+    new_element.value = option
+
+    parent_select.appendChild(new_element)
 }
 
 

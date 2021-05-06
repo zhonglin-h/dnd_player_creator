@@ -51,6 +51,20 @@ body
     display: flex;
 }
 
+.vertical-layout {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-object {
+    flex: 1 1 auto;
+    width:1px
+}
+
+.flex-cant-shrink-object {
+    flex: 1 0 auto;
+}
+
 .action-button {
     position: absolute;
 
@@ -69,4 +83,13 @@ p {
 
 .small-scaling-text {
     font-size: 0.75rem;
+}
+
+textarea {
+    resize: none;
+}
+
+.fill-width-textarea {
+    resize: none;
+    width: 100%;
 }

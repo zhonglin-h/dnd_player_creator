@@ -9,8 +9,10 @@
 <body style="background: white;">
     <div class='player-sheet'>
         <h1>Player Sheet</h1>
-        <button id='save-button' class='action-button' style='right:2%;top:1%;'>Save</button>
-        <button id='open-button' class='action-button' style='right:12%;top:1%;'>Open</button>
+        <button id='save-as-button' class='action-button' style='right:2%;top:1%;'>TODO</button> <!-- TODO: finish -->
+        <button id='save-button' class='action-button' style='right:12%;top:1%;'>Save</button>
+        <button id='open-button' class='action-button' style='right:22%;top:1%;'>Open</button>
+        <button id='new-button' class='action-button' style='right:32%;top:1%;'>New</button>
         <div class='player-main-layout'>
             <div class='player-main-info-layout'>
                 <div class='horizontal-layout'>
@@ -56,19 +58,19 @@
                     <textarea id='other-prof-lang-entry' style='flex: 1 1 auto;resize:none;' ></textarea>
                 </div>
                 <!-- Second Column -->
-                <div>
+                <div class='vertical-layout'>
                     <div id='player-combat-details-layout'>
-                        <div style='grid-area:ac'>
+                        <div class='vertical-layout' style='grid-area:ac'>
                             <p>AC</p>
-                            <input id='ac-entry' style='width:100%'/>
+                            <input id='ac-entry' style='flex: 1 1 auto'/>
                         </div>
-                        <div style='grid-area:init'>
+                        <div class='vertical-layout' style='grid-area:init;'>
                             <p>Initiative</p>
-                            <input id='init-entry'  style='width:100%'/>
+                            <input id='init-entry'  style='flex: 1 1 auto'/>
                         </div>
-                        <div style='grid-area:speed'>
+                        <div class='vertical-layout' style='grid-area:speed;'>
                             <p>Speed</p>
-                            <input id='speed-entry' style='width:100%'/>
+                            <input id='speed-entry' style='flex: 1 1 auto'/>
                         </div>
                         <div class='horizontal-layout' style='grid-area:hp;'>
                             <p style='flex:1 0 auto;'>Hit Points</p>
@@ -80,11 +82,11 @@
                             <p style='flex:1 0 auto;'>Temporary Hit Points</p>
                             <input id='current-thp-entry' style='width:10%'/>
                         </div>
-                        <div style='grid-area:hit-dice; display:flex; flex-direction: column;'>
+                        <div class='vertical-layout' style='grid-area:hit-dice;'>
                             <p>Hit Dice</p>
                             <input id='hit-dice-entry' style="flex: 1 1 auto;"></input>
                         </div>
-                        <div style='grid-area:death-saves'>
+                        <div class='vertical-layout' style='grid-area:death-saves;'>
                             <p>Death Saves</p>
                             <div class="horizontal-layout">
                                 <div>
@@ -102,16 +104,51 @@
                             </div>
                         </div>
                     </div>
+                    <div id='favorite-combat-maneuvers-display'>
+                        <!-- TODO: finish -->
+                    </div>
+                    <br>
+                    <p>Currency</p>
+                    <div class='horizontal-layout'>
+                        <label for='copper-entry'>CP</label>
+                        <input class='flex-object' id='copper-entry' name='copper-entry'/>
+                        <label for='silver-entry'>SP</label>
+                        <input class='flex-object' id='silver-entry' name='silver-entry'/>
+                    </div>
+                    <div class='horizontal-layout'>
+                        <label for='electrum-entry'>EP</label>
+                        <input class='flex-object' id='electrum-entry' name='electrum-entry'/>
+                        <label for='gold-entry'>GP</label>
+                        <input class='flex-object' id='gold-entry' name='gold-entry'/>
+                        <label for='platinum-entry'>PP</label>
+                        <input class='flex-object' id='platinum-entry' name='platinum-entry'/>
+                    </div>
+                    <br>
+                    <div class='flex-object vertical-layout' id="equipment-summary-display" style="width:100%">
+                        <!-- TODO: replace this box with what we need -->
+                        <p>Equipment</p>
+                        <textarea id='equipment-entry' class='flex-object' style='width:100%;resize: none;'></textarea>
+                    </div>
+
                 </div>
                 <!-- Third Column -->
-                <div>
-                    Empty
+                <div class='vertical-layout'>
+                    <p>Personality Traits</p>
+                    <textarea id='person-traits-entry' class="flex-cant-shrink-object"></textarea>
+                    <p>Ideals</p>
+                    <textarea id='ideals-entry' class="flex-cant-shrink-object"></textarea>
+                    <p>Bonds</p>
+                    <textarea id='bonds-entry' class="flex-cant-shrink-object"></textarea>
+                    <p>Flaws</p>
+                    <textarea id='flaws-entry' class="flex-cant-shrink-object"></textarea>
+                    <p>Features and Traits</p>
+                    <textarea id='features-traits-entry' style="flex: 10 0 auto"></textarea>
                 </div>
             </div>
         </div>
     </div>
     <div class='right-section'>
-        
+        Coming soon TM.
     </div>
 </body>
 </html>

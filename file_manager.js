@@ -17,7 +17,7 @@ var base_path = false
 
 // save state
 var save_json = false // dictionary
-var save_file_path = "test.json" // TODO: implement this correctly
+var save_file_path = false // TODO: implement this correctly
 
 // -------------- INIT -----------------
 function initMain(ipcMain){

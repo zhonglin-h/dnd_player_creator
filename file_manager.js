@@ -20,8 +20,9 @@ var save_json = false // dictionary
 var save_file_path = false // TODO: implement this correctly
 
 // -------------- INIT -----------------
-function initMain(ipcMain){
-    //fs.mkdirSync("saves", { recursive: true })
+function initMain(ipcMain, base_path){
+    setBasePath(base_path)
+    fs.mkdirSync(path.join(base_path, "saves"), { recursive: true })
     ipcMain.on('get-save', (event, data) => {
         event.returnValue = getSave()
     })

@@ -1,7 +1,7 @@
 const { app, BrowserWindow, screen, ipcMain, Menu} = require('electron')
 const path = require('path')
 
-const file_manager = require('../dnd_player_creator/file_manager.js')
+const file_manager = require(path.join(__dirname, "file_manager.js"))
 
 var win = null
 
@@ -56,7 +56,7 @@ function createWindow () {
 
     win.loadFile('main.html')
 
-    file_manager.setBasePath(app.getAppPath())
+    file_manager.initMain(ipcMain, app.getAppPath())
 
     setMainListeners()
     setMenu()

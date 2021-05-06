@@ -1,6 +1,7 @@
 const {ipcRenderer} = require('electron')
+const path = require('path')
 
-const C = require('../dnd_player_creator/CONSTANTS.js')
+const C = require(path.join(__dirname,'CONSTANTS.js'))
 
 // dynamically fill in options
 function preload_from_constants(){

@@ -1,0 +1,10 @@
+Use following to install electron-packager locally.
+    npm install electron-packager --save-dev
+
+Use following to create distributable with source code unhidden, with name SystemGenerator
+    npx electron-packager . SystemGeneratorV0_3_0 --out ./releases/
+    npx electron-packager . SystemGeneratorV1_0_0 --out ./releases/ --overwrite
+    npx electron-packager . dnd_player_creator --out ./releases/ --overwrite
+
+Following does better at hidding, but requires JScrambler to really be harder to read.
+    npx electron-packager . SystemGenerator --asar --out ./releases/

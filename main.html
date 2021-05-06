@@ -9,7 +9,7 @@
 <body style="background: white;">
     <div class='player-sheet'>
         <h1>Player Sheet</h1>
-        <button class='action-button' style='right:5px;top:5px;'>Save</button>
+        <button id='save-button' class='action-button' style='right:5px;top:5px;'>Save</button>
         <div class='player-main-layout'>
             <div class='player-main-info-layout'>
                 <div class='horizontal-layout'>
@@ -88,15 +88,13 @@
                         </div>
                         <div class='horizontal-layout' style='grid-area:hp;'>
                             <p style='flex:1 0 auto;'>Hit Points</p>
-                            <input id='speed-entry' style='width:10%'/>
+                            <input id='current-hp-entry' style='width:10%'/>
                             /
-                            <input id='speed-entry' style='width:10%'/>
+                            <input id='total-hp-entry' style='width:10%'/>
                         </div>
                         <div class='horizontal-layout' style='grid-area:thp;'>
                             <p style='flex:1 0 auto;'>Temporary Hit Points</p>
-                            <input id='speed-entry' style='width:10%'/>
-                            /
-                            <input id='speed-entry' style='width:10%'/>
+                            <input id='current-thp-entry' style='width:10%'/>
                         </div>
                         <div style='grid-area:hit-dice'>hit dice</div>
                         <div style='grid-area:death-saves'>

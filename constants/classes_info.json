@@ -1,0 +1,12 @@
+{
+    "class_choices": [
+        "Artificer", "Sorcerer"
+    ],
+    "class_saving_throws": {
+        "Artificer": ["Constitution", "Intelligence"], 
+        "Sorcerer": ["Constitution", "Charisma"]
+    },
+    "class_abilities": {
+        
+    }
+}

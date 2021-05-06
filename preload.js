@@ -1,5 +1,9 @@
 const {ipcRenderer} = require('electron')
 
+const C = require('../dnd_player_creator/CONSTANTS.js')
+
+
+
 function update_displayed_data(dict){
     const root_node = document.getRootNode()
 
@@ -16,6 +20,8 @@ function recursive_entry_editing(node, dict){
         } else if (node.nodeName == 'INPUT' && node.type == 'checkbox') {
             node.checked = dict[node.id]
         } else if (node.nodeName == 'TEXTAREA') {
+            node.value = dict[node.id]
+        } else if (node.nodeName == 'SELECT') {
             node.value = dict[node.id]
         } else if (node.nodeName == 'BUTTON') {
             // do nothing
@@ -53,6 +59,8 @@ function recursive_entry_adding(node, dict){
             dict[node.id] = node.checked
         } else if (node.nodeName == 'TEXTAREA') {
             dict[node.id] = node.value
+        } else if (node.nodeName == 'SELECT') {
+            dict[node.id] = node.value
         } else if (node.nodeName == 'BUTTON') {
             // do nothing
         } else {
@@ -73,7 +81,26 @@ function recursive_entry_adding(node, dict){
     return return_val
 }
 
+// helper functions
+function fill_drop_down(node, options_arr){
+    for (const option of options_arr){
+        let new_element = document.createElement("option")
+
+        new_element.textContent = option
+        new_element.value = option
+
+        node.appendChild(new_element)
+    }
+}
+
+
+// main code
+
 window.addEventListener('DOMContentLoaded', () => {
+    // dynamically fill in options
+    const alignment_entry = document.getElementById('alignment-entry')
+    fill_drop_down(alignment_entry, C.player_info['alignment'])
+
     // set onclick listeners
     const open_button = document.getElementById('open-button')
     const save_button = document.getElementById('save-button')

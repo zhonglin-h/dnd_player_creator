@@ -36,6 +36,8 @@
 #player-skill-list {
     display: grid; 
     
+    column-gap: 3%;
+    
     grid-template-columns: minmax(0,1fr) minmax(0, 7fr) minmax(0, 2fr);
 }
 

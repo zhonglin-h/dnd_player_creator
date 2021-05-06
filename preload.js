@@ -37,9 +37,9 @@ function preload_from_constants(){
     }
     // add saving throws
     for (const short_ability_name of C.player_info['short_ability_scores']){
-        let element = document.createElement('p')
-        element.id = short_ability_name.toLowerCase() + '-saving-throw-display'
-        element.textContent = "0"
+        let element = document.createElement('input')
+        element.id = short_ability_name.toLowerCase() + '-saving-throw-entry'
+        element.value = "0"
         ability_scores_list.appendChild(element)
     }
 
@@ -61,9 +61,7 @@ function preload_from_constants(){
         // prof and expertise
         let prof_exp_select = document.createElement('select')
         prof_exp_select.id = skill['name'].toLowerCase() + '-prof-exp-entry'
-        add_option_element(prof_exp_select, '-')
-        add_option_element(prof_exp_select, 'Prof')
-        add_option_element(prof_exp_select, 'Exp')
+        fill_drop_down(prof_exp_select, ['-', 'P', 'E'])
         skills_list.appendChild(prof_exp_select)
     }
 }
@@ -155,15 +153,6 @@ function fill_drop_down(node, options_arr){
 
         node.appendChild(new_element)
     }
-}
-
-function add_option_element(parent_select, option){
-    let new_element = document.createElement('option')
-
-    new_element.textContent = option
-    new_element.value = option
-
-    parent_select.appendChild(new_element)
 }
 
 

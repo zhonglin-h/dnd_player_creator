@@ -1,4 +1,5 @@
 @import "player_page/player_main_layout.css";
+@import "right_page/right_page_main.css";
 
 html
 {
@@ -35,16 +36,6 @@ body
 
     margin: 0;
     padding: 0;
-}
-
-.right-section{
-    position: relative; /* in order for position relative in children to work */
-    float:left;
-
-    width: 50%;
-    height: 100%;
-
-    background-color: coral;
 }
 
 .horizontal-layout {

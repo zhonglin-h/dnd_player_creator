@@ -252,7 +252,6 @@ function fill_drop_down(node, options_arr){
 function init(given_ipcRenderer){
     ipcRenderer = given_ipcRenderer
 
-    ipcRenderer.send('debug', "Test")
     preload_from_constants()
     set_click_listeners()
     set_ipc_listeners()

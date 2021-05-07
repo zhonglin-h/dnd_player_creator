@@ -3,20 +3,25 @@ const path = require('path')
 const C = require(path.join(__dirname, '..', 'CONSTANTS.js'))
 const PPVALS = require(path.join(__dirname,'player_page_values.js'))
 
+let all_overrideable_inputs = []
+
 function add_ability_automation(ipcRenderer) {
 
     // ability score, mod, and saving throws
 
     const prof_e = document.getElementById(PPVALS.get_prof_id())
     add_override_mode(prof_e)
+    all_overrideable_inputs.push(prof_e)
 
     for (const short_ability_name of C.player_info['short_ability_scores']){
         const modified_ability_score = document.getElementById(short_ability_name.toLowerCase() + C.SAVED_ENTRIES_ID_KEY)
         add_override_mode(modified_ability_score)
+        all_overrideable_inputs.push(modified_ability_score)
         add_ability_automation_on_focusout(ipcRenderer, modified_ability_score, short_ability_name)
 
         const saving_throw = document.getElementById(PPVALS.get_saving_throw_id(short_ability_name))
         add_override_mode(saving_throw)
+        all_overrideable_inputs.push(saving_throw)
         add_ability_automation_on_focusout(ipcRenderer, saving_throw, short_ability_name)
 
         add_ability_automation_on_change(ipcRenderer, PPVALS.get_save_prof_node(short_ability_name), short_ability_name)
@@ -28,8 +33,15 @@ function add_ability_automation(ipcRenderer) {
 
 }
 
+function refresh_overrides(){
+    for (const node of all_overrideable_inputs){
+        reset_node_override(node)
+    }
+}
+
 function refresh_automation(ipcRenderer) {
     ipcRenderer.send('debug', 'test')
+
     for (const short_ability_name of C.player_info['short_ability_scores']){
         set_ability_related_values(ipcRenderer, short_ability_name)
     }
@@ -82,10 +94,16 @@ function add_override_mode(node){
             }
         })
     }
-    
+}
+
+function reset_node_override(node){
+    if (node.nodeName == 'INPUT' && node.type == 'text'){
+        node.style.color = C.BLACK
+    }
 }
 
 module.exports = {
     add_ability_automation,
-    refresh_automation
+    refresh_automation,
+    refresh_overrides
 }

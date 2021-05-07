@@ -136,6 +136,8 @@ function set_ipc_listeners(){
 
 // helper functions
 function update_displayed_data(dict){
+    automation.refresh_overrides()
+
     const root_node = document.getRootNode()
 
     recursive_entry_editing(root_node, dict)

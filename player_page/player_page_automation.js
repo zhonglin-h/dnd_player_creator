@@ -28,6 +28,13 @@ function add_ability_automation(ipcRenderer) {
 
 }
 
+function refresh_automation(ipcRenderer) {
+    ipcRenderer.send('debug', 'test')
+    for (const short_ability_name of C.player_info['short_ability_scores']){
+        set_ability_related_values(ipcRenderer, short_ability_name)
+    }
+}
+
 // sets all ability related values, without changing any overriden values (dark blue)
 function set_ability_related_values(ipcRenderer, short_ability_name){
     let ability_score = PPVALS.get_ability_score(short_ability_name)
@@ -79,5 +86,6 @@ function add_override_mode(node){
 }
 
 module.exports = {
-    add_ability_automation
+    add_ability_automation,
+    refresh_automation
 }

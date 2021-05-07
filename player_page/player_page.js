@@ -139,6 +139,8 @@ function update_displayed_data(dict){
     const root_node = document.getRootNode()
 
     recursive_entry_editing(root_node, dict)
+
+    automation.refresh_automation(ipcRenderer)
 }
 
 // TODO: make these recursive functions ignore certain tabs, like the entire list of every spell
@@ -198,6 +200,10 @@ function recursive_entry_editing(node, dict){
             // do nothing
         } else {
             ipcRenderer.send('debug', "type unrecognized: " + node.id + ", " + node.nodeName + ", " + node.type + ", " + node.value)
+        }
+
+        if (node.id + C.OVERRIDE_KEY in dict){
+            node.style.color = dict[node.id + C.OVERRIDE_KEY]
         }
     }
 

@@ -32,7 +32,7 @@ function setMainListeners(){
                 event.reply('update-displayed-data', file_manager.getSave())
             } else {
                 event.reply('error', "failed to load file")
-                event.reply('console-message', "\nfailed to load file")
+                event.reply('console-message', "\r\nfailed to load file")
             }
         }
     })
@@ -45,6 +45,7 @@ function setMainListeners(){
             file_manager.saveSave()
 
             event.reply('update-displayed-data', file_manager.getSave())
+            event.reply('console-message', "\r\nnew file successfully loaded")
         }
     })
 }

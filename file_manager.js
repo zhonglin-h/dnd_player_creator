@@ -37,7 +37,7 @@ function openFileDialog (win){
         let options = {
         title : "Choose File", 
 
-        defaultPath : path.join(base_path),
+        defaultPath : path.join(base_path, 'saves'),
 
         buttonLabel : "Open",
 

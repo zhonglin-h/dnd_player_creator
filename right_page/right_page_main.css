@@ -40,11 +40,11 @@
     white-space: pre-wrap;
 }
 
-.tab-button {
+.right-page-tab-button {
     float: left;
 }
 
-.tab {
+.right-page-tab {
     flex: 1 1 auto;
 
     /* float:none; */

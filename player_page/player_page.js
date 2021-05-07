@@ -1,6 +1,8 @@
 const path = require('path')
 
 const C = require(path.join(__dirname,'..', 'CONSTANTS.js'))
+const PPVALS = require(path.join(__dirname,'player_page_values.js'))
+const automation = require(path.join(__dirname,'player_page_automation.js'))
 
 let ipcRenderer = undefined
 
@@ -19,7 +21,7 @@ function preload_from_constants(){
     // add inputs
     for (const short_ability_name of C.player_info['short_ability_scores']){
         let element = document.createElement('input')
-        element.id = short_ability_name.toLowerCase() + C.saved_entries_id_key
+        element.id = short_ability_name.toLowerCase() + C.SAVED_ENTRIES_ID_KEY
         ability_scores_list.appendChild(element)
     }
     // add display
@@ -36,6 +38,14 @@ function preload_from_constants(){
     for (let i = 1; i < C.player_info['short_ability_scores'].length; i++){
         let buffer = document.createElement('p')
         ability_scores_list.appendChild(buffer)
+    }
+    // saving throw proficiencies
+    for (const short_ability_name of C.player_info['short_ability_scores']){
+        let element = document.createElement('input')
+        element.type = 'checkbox'
+        element.id = PPVALS.get_save_prof_id(short_ability_name)
+        element.checked = false
+        ability_scores_list.appendChild(element)
     }
     // add saving throws
     for (const short_ability_name of C.player_info['short_ability_scores']){
@@ -66,6 +76,10 @@ function preload_from_constants(){
         fill_drop_down(prof_exp_select, ['-', 'P', 'E'])
         skills_list.appendChild(prof_exp_select)
     }
+
+
+    // automation
+    automation.add_ability_automation(ipcRenderer)
 }
 
 function set_click_listeners(){
@@ -127,11 +141,13 @@ function update_displayed_data(dict){
     recursive_entry_editing(root_node, dict)
 }
 
+// TODO: make these recursive functions ignore certain tabs, like the entire list of every spell
+
 function recursive_entry_new (node, dict){
     let return_val = 0;
     
     // add it in if it's data
-    if (node.id != undefined && node.id != "" && node.id.search(C.saved_entries_id_key) > 0){
+    if (node.id != undefined && node.id != "" && node.id.search(C.SAVED_ENTRIES_ID_KEY) > 0){
         if (node.id in dict){
             ipcRenderer.send('debug', "this node id was repeated: " + node.id)
             return -1;
@@ -169,7 +185,7 @@ function recursive_entry_editing(node, dict){
     let return_val = 0;
     
     // edit it in if it's data
-    if (node.id != undefined && node.id != "" && node.id.search(C.saved_entries_id_key) > 0){
+    if (node.id != undefined && node.id != "" && node.id.search(C.SAVED_ENTRIES_ID_KEY) > 0){
         if (node.nodeName == 'INPUT' && node.type == 'text'){
             node.value = dict[node.id]
         } else if (node.nodeName == 'INPUT' && node.type == 'checkbox') {
@@ -202,7 +218,7 @@ function recursive_entry_adding(node, dict){
     let return_val = 0;
     
     // add it in if it's data
-    if (node.id != undefined && node.id != "" && node.id.search(C.saved_entries_id_key) > 0){
+    if (node.id != undefined && node.id != "" && node.id.search(C.SAVED_ENTRIES_ID_KEY) > 0){
         if (node.id in dict){
             ipcRenderer.send('debug', "this node id was repeated: " + node.id)
             return -1;
@@ -221,6 +237,9 @@ function recursive_entry_adding(node, dict){
         } else {
             ipcRenderer.send('debug', "type unrecognized: " + node.id + ", " + node.nodeName + ", " + node.type + ", " + node.value)
         }
+
+        // deal with overrides
+        dict[node.id + C.OVERRIDE_KEY] = node.style.color;
     }
 
     // check children

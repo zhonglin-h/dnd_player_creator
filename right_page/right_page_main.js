@@ -17,9 +17,11 @@ function set_click_listeners() {
 
 function set_ipc_listeners(){
     const console = document.getElementById('console')
+    const console_text = document.getElementById('console-text')
 
     ipcRenderer.on('console-message', function(event,arg) {
-        console.textContent = console.textContent + arg
+        console_text.textContent = console_text.textContent + arg
+        console.scrollTop = console.scrollHeight
     })
 }
 

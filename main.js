@@ -16,7 +16,11 @@ function setMainListeners(){
 
     ipcMain.on('save', function (event, arg){
         file_manager.updateSave(arg)
-        file_manager.saveSave()
+        let result = file_manager.saveSave()
+
+        if (!result){
+            event.reply('console-message', "\r\nNo document has been created yet or path has changed. Data has been temporarily saved into temp.json.")
+        }
     })
 
     ipcMain.on('open', function(event,arg) {
@@ -28,6 +32,7 @@ function setMainListeners(){
                 event.reply('update-displayed-data', file_manager.getSave())
             } else {
                 event.reply('error', "failed to load file")
+                event.reply('console-message', "\nfailed to load file")
             }
         }
     })

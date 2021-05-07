@@ -131,6 +131,7 @@ function saveSave(){
         writeJSONToFile(save_file_path, save_json)
         return true
     } else {
+        writeJSONToFile(path.join(base_path, 'saves', 'temp.json'), save_json)
         console.log("Error: either save is dummy, or no save loaded")
         return false
     }

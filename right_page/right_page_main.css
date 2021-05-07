@@ -21,7 +21,7 @@
 }
 
 #about-tab {
-    display: block;
+    display: flex;
 }
 
 #spells-tab {

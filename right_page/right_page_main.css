@@ -31,7 +31,9 @@
 #console {
     height: 30%;
 
-    background-color: dimgrey;
+    overflow-y:scroll;
+
+    background-color:darkgrey;
 }
 
 .tab-button {

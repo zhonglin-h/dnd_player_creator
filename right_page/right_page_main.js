@@ -3,6 +3,27 @@ let ipcRenderer = undefined
 
 let current_tab = 'about-tab'
 
+function set_click_listeners() {
+    const right_about_tab_button = document.getElementById('right-about-tab-button')
+    const right_spells_tab_button = document.getElementById('right-spells-tab-button')
+
+    right_about_tab_button.addEventListener('click', function() {
+        change_tab('about-tab')
+    })
+    right_spells_tab_button.addEventListener('click', function() {
+        change_tab('spells-tab')
+    })
+}
+
+function set_ipc_listeners(){
+    const console = document.getElementById('console')
+
+    ipcRenderer.on('console-message', function(event,arg) {
+        console.textContent = console.textContent + arg
+    })
+}
+
+// helper functions
 function change_tab (new_tab_id) {
 
     // make current tab invisible
@@ -16,21 +37,10 @@ function change_tab (new_tab_id) {
     current_tab = new_tab_id
 }
 
-function set_click_listeners() {
-    const right_about_tab_button = document.getElementById('right-about-tab-button')
-    const right_spells_tab_button = document.getElementById('right-spells-tab-button')
-
-    right_about_tab_button.addEventListener('click', function() {
-        change_tab('about-tab')
-    })
-    right_spells_tab_button.addEventListener('click', function() {
-        change_tab('spells-tab')
-    })
-}
-
 function init(incoming_ipcRenderer){
     ipcRenderer = incoming_ipcRenderer
     set_click_listeners()
+    set_ipc_listeners()
 }
 
 module.exports = {

@@ -62,10 +62,10 @@ function createWindow () {
 
     win.loadFile('main.html')
 
-    file_manager.initMain(ipcMain, app.getAppPath())
+    file_manager.initMain(ipcMain, path.resolve('.', 'dnd_player_creator.exe', '..'))
 
-    setMainListeners()
     setMenu()
+    setMainListeners()
 }
 
 app.whenReady().then(() => {

@@ -13,9 +13,21 @@ function get_prof_bonus(){
     return parseInt(document.getElementById(get_prof_id()).value)
 }
 
+function get_skill_prof(skill){
+    return document.getElementById(skill['name'].toLowerCase() + '-prof-exp-entry').value
+}
+
 // --------- Nodes
 function get_save_prof_node(short_ability_name){
     return document.getElementById(get_save_prof_id(short_ability_name))
+}
+
+function get_skill_mod_node(skill){
+    return document.getElementById(skill['name'].toLowerCase() + '-skill-bonus-entry')
+}
+
+function get_skill_prof_node(skill){
+    return document.getElementById(skill['name'].toLowerCase() + '-prof-exp-entry')
 }
 
 // --------- IDs
@@ -55,5 +67,8 @@ module.exports = {
     get_save_prof_node,
     get_prof_id,
     get_save_prof_id,
-    get_saving_throw_id
+    get_saving_throw_id,
+    get_skill_mod_node,
+    get_skill_prof,
+    get_skill_prof_node
 }

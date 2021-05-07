@@ -29,8 +29,16 @@ function add_ability_automation(ipcRenderer) {
         add_ability_automation_on_focusout(ipcRenderer, prof_e, short_ability_name) 
     }
 
-    // TODO: skills
+    // skills
+    for (const skill of C.player_info['skills']){
+        const skill_node = PPVALS.get_skill_mod_node(skill)
 
+        add_override_mode(skill_node)
+        all_overrideable_inputs.push(skill_node)
+        add_ability_automation_on_focusout(ipcRenderer, skill_node, skill['ability_type'])
+
+        add_ability_automation_on_change(ipcRenderer, PPVALS.get_skill_prof_node(skill), skill['ability_type'])
+    }
 }
 
 function refresh_overrides(){
@@ -55,12 +63,24 @@ function set_ability_related_values(ipcRenderer, short_ability_name){
     const ability_modifier_display = document.getElementById(short_ability_name.toLowerCase() + '-display')
     ability_modifier_display.textContent = ability_score
 
-    // update saves, unless overriden
+    // update saving throws, unless overriden
     const save_prof = document.getElementById(PPVALS.get_save_prof_id(short_ability_name)).checked
     const saving_throw = document.getElementById(PPVALS.get_saving_throw_id(short_ability_name))
     if (saving_throw.style.color != C.OVERRIDEN_BLUE){
         let bonus = ((save_prof)?PPVALS.get_prof_bonus():0)
         saving_throw.value = ability_score + bonus
+    }
+
+    // update skills
+    for (const skill of C.player_info['skills']){
+        if (skill['ability_type'] == short_ability_name){
+            const skill_node = PPVALS.get_skill_mod_node(skill)
+            const skill_prof = PPVALS.get_skill_prof(skill)
+
+            if (skill_node.style.color != C.OVERRIDEN_BLUE){
+                skill_node.value = ability_score + get_bonus_from_prof(skill_prof, PPVALS.get_prof_bonus())
+            }
+        }
     }
 }
 
@@ -100,6 +120,18 @@ function reset_node_override(node){
     if (node.nodeName == 'INPUT' && node.type == 'text'){
         node.style.color = C.BLACK
     }
+}
+
+// changes '-', 'P', and 'E' to number bonus
+function get_bonus_from_prof(prof_state, prof_bonus){
+    if (prof_state == '-')
+        return 0
+    else if (prof_state == 'P')
+        return prof_bonus
+    else if (prof_state == 'E')
+        return prof_bonus * 2
+    else
+        return NaN
 }
 
 module.exports = {

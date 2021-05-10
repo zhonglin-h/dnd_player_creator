@@ -47,14 +47,14 @@ function get_saving_throw_id(short_ability_name){
 function sum_string_array(array){
     let total = 0
     for (const val of array){
-        let result = ability_score_to_modifier(parseInt(val))
+        let result = parseInt(val)
         if (result == NaN){
-            return false
+            return NaN
         } else {
             total += result
         }
     }
-    return total
+    return ability_score_to_modifier(total)
 }
 
 function ability_score_to_modifier(score){
